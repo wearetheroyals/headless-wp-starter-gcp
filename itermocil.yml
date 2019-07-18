@@ -5,8 +5,8 @@ windows:
     root: ~/headless-wp-starter/
     layout: main-vertical
     panes:
-      - docker-compose logs -f wp-headless
+      - docker-compose logs -f wordpress-522
       - commands:
-          - docker-compose logs -f frontend
+          - docker-compose logs -f nextjs-9
         name: 'git'
       - git status

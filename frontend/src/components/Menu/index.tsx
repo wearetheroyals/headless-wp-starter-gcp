@@ -56,11 +56,11 @@ const Menu: NextFunctionComponent<{}> = () => {
                   );
                 }
 
-                const [_, page, slug] = item.url.split('/');
+                const [_, page] = item.url.split('/');
                 return (
                   <Link
                     as={`${item.url}`}
-                    href={`/${page}?slug=${slug}`}
+                    href={`/${page}/[slug]`}
                     key={item.url}
                   >
                     <a className="menu-link">{item.label}</a>

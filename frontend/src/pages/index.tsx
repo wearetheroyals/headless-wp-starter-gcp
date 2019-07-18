@@ -79,10 +79,7 @@ const Index: NextFunctionComponent = () => {
                   return (
                     <ul key={node.slug}>
                       <li>
-                        <Link
-                          as={`/post/${node.slug}`}
-                          href={`/post?slug=${node.slug}`}
-                        >
+                        <Link as={`/post/${node.slug}`} href={`/post/[slug]`}>
                           <a>{node.title}</a>
                         </Link>
                       </li>
@@ -95,10 +92,7 @@ const Index: NextFunctionComponent = () => {
                   return (
                     <ul key={node.slug}>
                       <li>
-                        <Link
-                          as={`/page/${node.slug}`}
-                          href={`/page?slug=${node.slug}&apiRoute=page`}
-                        >
+                        <Link as={`/page/${node.slug}`} href={`/page/[slug]`}>
                           <a>{node.title}</a>
                         </Link>
                       </li>

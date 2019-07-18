@@ -78,10 +78,7 @@ const Category: NextFunctionComponent<Props> = ({ slug }) => {
                   return (
                     <ul key={node.slug}>
                       <li>
-                        <Link
-                          as={`/post/${node.slug}`}
-                          href={`/post?slug=${node.slug}`}
-                        >
+                        <Link as={`/post/${node.slug}`} href={`/post/[slug]`}>
                           <a>{node.title}</a>
                         </Link>
                       </li>

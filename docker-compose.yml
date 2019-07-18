@@ -6,12 +6,12 @@ volumes:
 services:
     cloud-sql-proxy:
         image: gcr.io/cloudsql-docker/gce-proxy:1.14
-        command: /cloud_sql_proxy -instances=spotify-student-wp-staging:australia-southeast1:wp=tcp:0.0.0.0:3306 -credential_file=/root/.config/local-cloudsqlproxy.json
+        command: /cloud_sql_proxy -instances=nextjs-wp:australia-southeast1:wp=tcp:0.0.0.0:3306 -credential_file=/root/.config/nextjs-wp-0c6ef9d54730.json
         volumes:
         # this mounts your application default credential on the container, preventing the
         # 'invalid json file "/config": google: read JWT from JSON credentials: 'type' field is "authorized_user" (expected "service_account")'
         # error if you point to the actual credential file directly
-            - ~/.config/gcloud:/root/.config
+            - ~/.gcloud/nextjs-wp:/root/.config
         ports:
             - 3306:3306
 
@@ -43,11 +43,10 @@ services:
         container_name: nextjs-9
         depends_on:
             - wordpress-522
-        expose:
-            - '3000'
         image: theroyals-nextjs9
         environment:
             GRAPHQL_ENDPOINT: http://wordpress-522:8080/graphql
+            PORT: "3000"
         ports:
             - '3000:3000'
         volumes:

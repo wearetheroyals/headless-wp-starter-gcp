@@ -42,7 +42,9 @@ const Post: NextFunctionComponent<Props> = ({ slug }) => {
 
   return (
     <Query query={POST_QUERY} variables={{ filter: slug }}>
-      {({ data }: PostQueryResult) => {
+      {(x: PostQueryResult) => {
+        const { data } = x;
+        console.log('thishere', x);
         if (!data || !data.postBy || !data.postBy.title) {
           return <Error title="Unable to find post" statusCode={404} />;
         }
@@ -65,15 +67,15 @@ const Post: NextFunctionComponent<Props> = ({ slug }) => {
   );
 };
 
-Post.getInitialProps = async ({ query }: NextContext): Promise<Props> => {
-  if (!query) {
+Post.getInitialProps = async (ctx: NextContext): Promise<Props> => {
+  if (!ctx.query) {
     return {
       slug: '',
     };
   }
 
   return {
-    slug: query.slug,
+    slug: ctx.query && ctx.query.slug,
   };
 };
 
