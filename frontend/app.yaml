@@ -1,0 +1,12 @@
+# App Engine runtime configuration
+runtime: nodejs10
+service: default
+
+handlers:
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
+
+includes:
+  - .env.yaml

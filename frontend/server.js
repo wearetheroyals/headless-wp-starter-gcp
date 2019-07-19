@@ -1,18 +1,18 @@
 /* eslint-disable no-console */
 const express = require('express');
 const cors = require('cors');
+const compression = require('compression');
 const next = require('next');
 const proxyMiddleware = require('http-proxy-middleware');
 
 const proxy = {
   '/graphql': {
-    target: 'http://wp-headless:8080',
+    target: process.env.WORDPRESS_PATH || 'http://wordpress-522:8080',
     pathRewrite: { '^/graphql': '/graphql' },
     changeOrigin: true,
   },
 };
 
-const port = parseInt(process.env.PORT, 10) || 3000;
 const env = process.env.NODE_ENV || 'dev';
 const dev = env !== 'production';
 const app = next({
@@ -22,12 +22,11 @@ const app = next({
 
 const handle = app.getRequestHandler();
 
-const start = async () => {
+app.prepare().then(async () => {
   try {
-    await app.prepare();
-
     const server = express();
     server.use(cors());
+    server.use(compression());
 
     // Set up the proxy.
     Object.keys(proxy).map(context => {
@@ -38,13 +37,12 @@ const start = async () => {
       return handle(req, res);
     });
 
-    await server.listen(3000);
+    await server.listen(process.env.PORT);
 
-    console.log(`> Ready on port ${port} [${env}]`);
-  } catch (err) {
-    console.log('An error occurred, unable to start the server');
-    console.log(err);
+    console.log(`> Ready on port ${process.env.PORT} [${env}]`);
+  } catch (ex) {
+    console.error('An error occurred, unable to start the server');
+    console.error(ex.stack);
+    process.exit(1);
   }
-};
-
-start();
+});
