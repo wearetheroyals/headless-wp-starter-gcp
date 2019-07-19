@@ -13,7 +13,7 @@ Headless WordPress + Next.js Starter Kit for GCP is for setting up a local proje
 - Docker (I'm using 18.09 with compose 1.23)
 - A Google Cloud Platform (GCP) account
 - The [gcloud CLI](https://cloud.google.com/sdk/docs/#install_the_latest_cloud_sdk_version)
-- Composer
+- Composer (`brew install composer`)
 
 ## Before Setting Out
 
