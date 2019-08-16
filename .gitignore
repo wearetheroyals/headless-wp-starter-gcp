@@ -6,3 +6,5 @@ data
 */.env.yaml
 .DS_store
 .env
+
+frontend/build
