@@ -44,7 +44,6 @@ const Post: NextFunctionComponent<Props> = ({ slug }) => {
     <Query query={POST_QUERY} variables={{ filter: slug }}>
       {(x: PostQueryResult) => {
         const { data } = x;
-        console.log('thishere', x);
         if (!data || !data.postBy || !data.postBy.title) {
           return <Error title="Unable to find post" statusCode={404} />;
         }

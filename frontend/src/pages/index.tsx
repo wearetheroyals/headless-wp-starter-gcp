@@ -2,19 +2,20 @@ import React from 'react';
 import Link from 'next/link';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+
+import { parseContentComponent } from '../lib/html-parser';
+
 import { NextFunctionComponent } from '../next.d';
 
 import Layout from '../layout';
 
 import './_index.scss';
 
-const headerImageStyle = {
-  marginTop: 50,
-  marginBottom: 50,
-};
-
 const INDEX_PAGE_QUERY = gql`
   query PagesAndPostsQuery {
+    pageBy(uri: "index-page") {
+      content
+    }
     posts {
       edges {
         node {
@@ -35,6 +36,9 @@ const INDEX_PAGE_QUERY = gql`
 `;
 interface IndexPageQueryResult {
   data: {
+    pageBy: {
+      content: string;
+    };
     posts: {
       edges: Array<{
         node: {
@@ -58,21 +62,18 @@ const Index: NextFunctionComponent = () => {
   return (
     <Query query={INDEX_PAGE_QUERY}>
       {({ data }: IndexPageQueryResult) => {
-        if (!data || !data.pages || !data.posts) {
+        if (!data || !data.pages || !data.posts || !data.pageBy) {
           return null;
         }
 
-        const { posts, pages } = data;
+        const { posts, pages, pageBy } = data;
+        const Content = parseContentComponent(pageBy);
 
         return (
           <Layout>
             <section className="index">
-              <img
-                src="/static/images/wordpress-plus-react-header.png"
-                width="815"
-                alt="logo"
-                style={headerImageStyle}
-              />
+              {Content}
+
               <h2>Posts</h2>
               {Array.isArray(posts.edges) &&
                 posts.edges.map(({ node }) => {

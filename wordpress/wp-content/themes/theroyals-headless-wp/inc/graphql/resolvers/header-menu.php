@@ -53,7 +53,7 @@ add_action(
 			'headerMenu',
 			[
 				'type'        => Types::list_of( new HeaderMenuType() ),
-				'description' => __( 'Returns the header menu items', 'postlight-headless-wp' ),
+				'description' => __( 'Returns the header menu items', 'theroyals-headless-wp' ),
 				'resolve'     => function () {
 					return get_items();
 				},

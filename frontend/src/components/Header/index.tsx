@@ -1,13 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
-import { NextFunctionComponent } from '../../next.d';
+import Link from 'next/link';
 
-const Header: NextFunctionComponent<{}> = () => (
-  <Head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charSet="utf-8" />
-    <title>WordPress + Next.js Starter Kit Frontend by The Royals</title>
-  </Head>
+import './style.scss';
+
+interface Props {
+  onToggleMenu: () => void;
+  siteTitle?: string;
+  siteAuthor?: string;
+}
+
+const Header: React.SFC<Props> = ({
+  onToggleMenu,
+  siteTitle = '',
+  siteAuthor = '',
+}) => (
+  <header id="header" className="alt">
+    <Link href="/">
+      <a className="logo">
+        <strong>{siteTitle}</strong> <span>by {siteAuthor}</span>
+      </a>
+    </Link>
+    <nav>
+      <a className="menu-link" onClick={onToggleMenu} href="javascript:;">
+        Menu
+      </a>
+    </nav>
+  </header>
 );
 
 export default Header;

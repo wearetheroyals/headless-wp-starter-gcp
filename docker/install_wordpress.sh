@@ -2,7 +2,7 @@
 
 set -e
 
-mysql_ready='nc -z cloud-sql-proxy 3306'
+mysql_ready='nc -z mariadb 3306'
 
 if ! $mysql_ready
 then

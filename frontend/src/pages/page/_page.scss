@@ -1,4 +1,9 @@
-@import '../../styles/vars';
+@import '../../style/base';
 
 section.page {
+  .no-component {
+    padding: 50px 0;
+    max-width: 780px;
+    margin: 0 auto;
+  }
 }

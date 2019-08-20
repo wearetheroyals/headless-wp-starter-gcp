@@ -2,6 +2,9 @@ import React from 'react';
 import Error from 'next/error';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+
+import { parseContentComponent } from '../../lib/html-parser';
+
 import { NextFunctionComponent, NextContext } from '../../next.d';
 
 import Layout from '../../layout';
@@ -41,17 +44,11 @@ const Page: NextFunctionComponent<Props> = ({ slug }) => {
           return <Error title="Unable to find page" statusCode={404} />;
         }
 
+        const Content = parseContentComponent(data.pageBy);
+
         return (
           <Layout>
-            <section className="page">
-              <h1>{data.pageBy.title}</h1>
-              <div
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  __html: data.pageBy.content,
-                }}
-              />
-            </section>
+            <section className="page">{Content}</section>
           </Layout>
         );
       }}

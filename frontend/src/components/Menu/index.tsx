@@ -1,11 +1,27 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Link from 'next/link';
-import { NextFunctionComponent } from '../../next.d';
 
 import './style.scss';
+
+const MenuItem = ({ onToggleMenu, url, label, type }) => {
+  if (type === 'external') {
+    return (
+      <li onClick={onToggleMenu}>
+        <a className="" href={url} target="_blank" rel="noopener noreferrer">
+          {label}
+        </a>
+      </li>
+    );
+  }
+
+  return (
+    <li onClick={onToggleMenu}>
+      <Link href={url}>{label}</Link>
+    </li>
+  );
+};
 
 const MENU_QUERY = gql`
   query MenuQuery {
@@ -26,11 +42,7 @@ interface MenuQueryResult {
   };
 }
 
-const linkStyle = {
-  marginRight: 15,
-};
-
-const Menu: NextFunctionComponent<{}> = () => {
+const Menu = ({ onToggleMenu }) => {
   return (
     <Query query={MENU_QUERY}>
       {({ data }: MenuQueryResult) => {
@@ -41,32 +53,22 @@ const Menu: NextFunctionComponent<{}> = () => {
         const { headerMenu } = data;
 
         return (
-          <nav className="menu">
-            <Link href="/">
-              <a style={linkStyle}>Home</a>
-            </Link>
-
-            {Array.isArray(headerMenu) &&
-              headerMenu.map(item => {
-                if (item.type === 'external') {
-                  return (
-                    <a href={item.url} key={item.url} className="menu-link">
-                      {item.label}
-                    </a>
-                  );
-                }
-
-                const [_, page] = item.url.split('/');
-                return (
-                  <Link
-                    as={`${item.url}`}
-                    href={`/${page}/[slug]`}
-                    key={item.url}
-                  >
-                    <a className="menu-link">{item.label}</a>
-                  </Link>
-                );
-              })}
+          <nav id="menu">
+            <div className="inner">
+              <ul className="links">
+                {Array.isArray(headerMenu) &&
+                  headerMenu.map(item => (
+                    <MenuItem
+                      {...item}
+                      key={item.url}
+                      onToggleMenu={onToggleMenu}
+                    />
+                  ))}
+              </ul>
+            </div>
+            <a className="close" onClick={onToggleMenu} href="javascript:;">
+              Close
+            </a>
           </nav>
         );
       }}

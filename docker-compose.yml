@@ -1,55 +1,69 @@
-version: '3'
+version: '2'
 
 volumes:
   node_modules:
+  db_data:
 
 services:
-    cloud-sql-proxy:
-        image: gcr.io/cloudsql-docker/gce-proxy:1.14
-        command: /cloud_sql_proxy -instances=nextjs-wp:australia-southeast1:wp=tcp:0.0.0.0:3306 -credential_file=/root/.config/nextjs-wp-0c6ef9d54730.json
-        volumes:
-        # this mounts your application default credential on the container, preventing the
-        # 'invalid json file "/config": google: read JWT from JSON credentials: 'type' field is "authorized_user" (expected "service_account")'
-        # error if you point to the actual credential file directly
-            - ~/.gcloud/nextjs-wp:/root/.config
-        ports:
-            - 3306:3306
+  mariadb:
+    image: mariadb:10.3
+    container_name: mariadb
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_DATABASE: wp_headless
+      MYSQL_PASSWORD: wp_headless
+      MYSQL_USER: wp_headless
 
-    wordpress-522:
-        build:
-            dockerfile: Dockerfile
-            context: ./wordpress
-        image: theroyals-wp522
-        command: bash -c 'install_wordpress && apache2-foreground'
-        container_name: wordpress-522
-        depends_on:
-            - cloud-sql-proxy
-        env_file: ./.env
-        ports:
-            - '8080:8080'
-        user: www-data
-        volumes:
-            - ./wordpress:/var/www/html
-            - ./docker/install_wordpress.sh:/usr/local/bin/install_wordpress
-            - ./docker/migratedb_import.sh:/usr/local/bin/migratedb_import
-            - ./docker/postlightheadlesswpstarter.wordpress.xml:/var/www/postlightheadlesswpstarter.wordpress.xml
-            - ./docker/plugins:/var/www/plugins
+    # cloud-sql-proxy:
+    #     image: gcr.io/cloudsql-docker/gce-proxy:1.14
+    #     command: /cloud_sql_proxy -instances=nextjs-wp:australia-southeast1:wp=tcp:0.0.0.0:3306 -credential_file=/root/.config/nextjs-wp-0c6ef9d54730.json
+    #     volumes:
+    #     # this mounts your application default credential on the container, preventing the
+    #     # 'invalid json file "/config": google: read JWT from JSON credentials: 'type' field is "authorized_user" (expected "service_account")'
+    #     # error if you point to the actual credential file directly
+    #         - ~/.gcloud/nextjs-wp:/root/.config
+    #     ports:
+    #         - 3306:3306
 
-    nextjs-9:
-        build:
-            dockerfile: Dockerfile
-            context: ./frontend
-        command: ["npm", "run", "dev"]
-        container_name: nextjs-9
-        depends_on:
-            - wordpress-522
-        image: theroyals-nextjs9
-        environment:
-            GRAPHQL_ENDPOINT: http://wordpress-522:8080/graphql
-            PORT: "3000"
-        ports:
-            - '3000:3000'
-        volumes:
-            - ./frontend:/app
-            - node_modules:/app/node_modules
-        working_dir: /app
+  wordpress-522:
+    build:
+      dockerfile: Dockerfile
+      context: ./wordpress
+    image: theroyals-wp522
+    command: bash -c 'install_wordpress && apache2-foreground'
+    container_name: wordpress-522
+    depends_on:
+      - mariadb
+    env_file: ./.env
+    ports:
+      - '8080:8080'
+    user: www-data
+    volumes:
+      - ./wordpress:/var/www/html
+      - ./docker/install_wordpress.sh:/usr/local/bin/install_wordpress
+      - ./docker/migratedb_import.sh:/usr/local/bin/migratedb_import
+      - ./docker/postlightheadlesswpstarter.wordpress.xml:/var/www/postlightheadlesswpstarter.wordpress.xml
+      - ./docker/plugins:/var/www/plugins
+
+  nextjs-9:
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+    command: ["npm", "run", "dev"]
+    container_name: nextjs-9
+    depends_on:
+      - wordpress-522
+    image: theroyals-nextjs9
+    environment:
+      GRAPHQL_ENDPOINT: http://wordpress-522:8080/graphql
+      PORT: "3000"
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/app
+      - node_modules:/app/node_modules
+    working_dir: /app

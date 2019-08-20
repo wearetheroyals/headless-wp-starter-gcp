@@ -1,0 +1,51 @@
+[20-Aug-2019 01:47:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /var/www/html/wp-config.php:123
+Stack trace:
+#0 /var/www/html/wp-load.php(37): require_once()
+#1 /var/www/html/wp-admin/admin.php(34): require_once('/var/www/html/w...')
+#2 /var/www/html/wp-admin/options-general.php(10): require_once('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-config.php on line 123
+[20-Aug-2019 01:47:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198) : eval()'d code:122
+Stack trace:
+#0 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198): eval()
+#1 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1159): WP_CLI\Runner->load_wordpress()
+#2 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Bootstrap/LaunchRunner.php(23): WP_CLI\Runner->start()
+#3 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/bootstrap.php(74): WP_CLI\Bootstrap\LaunchRunner->process(Object(WP_CLI\Bootstrap\BootstrapState))
+#4 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/wp-cli.php(27): WP_CLI\bootstrap()
+#5 phar:///usr/local/bin/wp/php/boot-phar.php(11): include('phar:///usr/loc...')
+#6 /usr/local/bin/wp(4): include('phar:///usr/loc...')
+#7 {main}
+  thrown in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198) : eval()'d code on line 122
+[20-Aug-2019 01:48:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198) : eval()'d code:122
+Stack trace:
+#0 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198): eval()
+#1 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1159): WP_CLI\Runner->load_wordpress()
+#2 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Bootstrap/LaunchRunner.php(23): WP_CLI\Runner->start()
+#3 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/bootstrap.php(74): WP_CLI\Bootstrap\LaunchRunner->process(Object(WP_CLI\Bootstrap\BootstrapState))
+#4 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/wp-cli.php(27): WP_CLI\bootstrap()
+#5 phar:///usr/local/bin/wp/php/boot-phar.php(11): include('phar:///usr/loc...')
+#6 /usr/local/bin/wp(4): include('phar:///usr/loc...')
+#7 {main}
+  thrown in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198) : eval()'d code on line 122
+[20-Aug-2019 03:14:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198) : eval()'d code:144
+Stack trace:
+#0 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198): eval()
+#1 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1159): WP_CLI\Runner->load_wordpress()
+#2 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Bootstrap/LaunchRunner.php(23): WP_CLI\Runner->start()
+#3 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/bootstrap.php(74): WP_CLI\Bootstrap\LaunchRunner->process(Object(WP_CLI\Bootstrap\BootstrapState))
+#4 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/wp-cli.php(27): WP_CLI\bootstrap()
+#5 phar:///usr/local/bin/wp/php/boot-phar.php(11): include('phar:///usr/loc...')
+#6 /usr/local/bin/wp(4): include('phar:///usr/loc...')
+#7 {main}
+  thrown in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198) : eval()'d code on line 144
+[20-Aug-2019 03:15:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198) : eval()'d code:144
+Stack trace:
+#0 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198): eval()
+#1 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1159): WP_CLI\Runner->load_wordpress()
+#2 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Bootstrap/LaunchRunner.php(23): WP_CLI\Runner->start()
+#3 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/bootstrap.php(74): WP_CLI\Bootstrap\LaunchRunner->process(Object(WP_CLI\Bootstrap\BootstrapState))
+#4 phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/wp-cli.php(27): WP_CLI\bootstrap()
+#5 phar:///usr/local/bin/wp/php/boot-phar.php(11): include('phar:///usr/loc...')
+#6 /usr/local/bin/wp(4): include('phar:///usr/loc...')
+#7 {main}
+  thrown in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1198) : eval()'d code on line 144

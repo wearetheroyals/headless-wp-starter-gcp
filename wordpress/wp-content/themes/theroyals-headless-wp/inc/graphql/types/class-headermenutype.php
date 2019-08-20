@@ -26,7 +26,7 @@ class HeaderMenuType extends WPObjectType {
 		$config = [
 			'name'        => 'HeaderMenuType',
 			'fields'      => self::fields(),
-			'description' => __( 'Header Menu', 'postlight-headless-wp' ),
+			'description' => __( 'Header Menu', 'theroyals-headless-wp' ),
 		];
 		parent::__construct( $config );
 	}
@@ -40,15 +40,15 @@ class HeaderMenuType extends WPObjectType {
 				$fields = [
 					'label' => [
 						'type'        => Types::string(),
-						'description' => __( 'The URL label', 'postlight-headless-wp' ),
+						'description' => __( 'The URL label', 'theroyals-headless-wp' ),
 					],
 					'url'   => [
 						'type'        => Types::string(),
-						'description' => __( 'The URL', 'postlight-headless-wp' ),
+						'description' => __( 'The URL', 'theroyals-headless-wp' ),
 					],
 					'type'  => [
 						'type'        => Types::string(),
-						'description' => __( 'internal or external', 'postlight-headless-wp' ),
+						'description' => __( 'internal or external', 'theroyals-headless-wp' ),
 					],
 				];
 				return self::prepare_fields( $fields, 'HeaderMenuType' );
