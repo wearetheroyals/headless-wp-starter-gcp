@@ -510,9 +510,9 @@ If you need more advanced functionality check out the available WP-CLI commands:
 
 At this point you can start setting up custom fields in the WordPress admin, and if necessary, creating [custom REST API endpoints](https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/) in the Postlight Headless WordPress Starter theme.
 
-The primary theme code is located in `wordpress/wp-content/themes/postlight-headless-wp`.
+The primary theme code is located in `wordpress/wp-content/themes/theroyals-headless-wp`.
 
-You can also [modify and extend the GraphQL API](https://wpgraphql.com/docs/getting-started/about), An example of creating a Custom Type and registering a Resolver is located in: `wordpress/wp-content/themes/postlight-headless-wp/inc/graphql`.
+You can also [modify and extend the GraphQL API](https://wpgraphql.com/docs/getting-started/about), An example of creating a Custom Type and registering a Resolver is located in: `wordpress/wp-content/themes/theroyals-headless-wp/inc/graphql`.
 
 ## REST & GraphQL JWT Authentication
 
@@ -534,11 +534,11 @@ Remember to lint your code as you go.
 
 To lint WordPress theme modifications, you can use [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) like this:
 
-    docker exec -w /var/www/html/wp-content/themes/postlight-headless-wp wordpress-522 phpcs
+    docker exec -w /var/www/html/wp-content/themes/theroyals-headless-wp wordpress-522 phpcs
 
 You may also attempt to autofix PHPCS errors:
 
-    docker exec -w /var/www/html/wp-content/themes/postlight-headless-wp wordpress-522 phpcbf
+    docker exec -w /var/www/html/wp-content/themes/theroyals-headless-wp wordpress-522 phpcbf
 
 To lint and format the JavaScript apps, both [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/) configuration files are included.
 
@@ -555,7 +555,7 @@ In some cases, you need to delete the `wordpress-522` and `frontend` images (not
 
 **CORS errors**
 
-If you have deployed your WordPress install and are having CORS issues be sure to update `/wordpress/wp-content/themes/postlight-headless-wp/inc/frontend-origin.php` with your frontend origin URL.
+If you have deployed your WordPress install and are having CORS issues be sure to update `/wordpress/wp-content/themes/theroyals-headless-wp/inc/frontend-origin.php` with your frontend origin URL.
 
 See anything else you'd like to add here? Please send a pull request!
 
