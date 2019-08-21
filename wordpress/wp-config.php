@@ -40,8 +40,6 @@ if (isset($_SERVER['HTTP_HOST'])) {
 } else {
     define('HTTP_HOST', 'localhost');
 }
-define('WP_SITEURL', $protocol_to_use . HTTP_HOST);
-define('WP_HOME', $protocol_to_use . HTTP_HOST);
 
 // ** MySQL settings - You can get this info from your web host ** //
 $db_pass = ($_ENV["WORDPRESS_DB_PASSWORD"] ?: $_SERVER["WORDPRESS_DB_PASSWORD"]);
@@ -52,6 +50,8 @@ if ($onGae) {
     define('DB_HOST', ':/cloudsql/nextjs-wp:australia-southeast1:wp');
     define('DB_USER', 'wp_user');
     define('DB_PASSWORD', $db_pass);
+    define('WP_SITEURL', $protocol_to_use . HTTP_HOST);
+    define('WP_HOME', $protocol_to_use . HTTP_HOST);
 } else {
     /** The name of the local database for WordPress */
     define('DB_NAME', 'wp_headless');
@@ -59,6 +59,8 @@ if ($onGae) {
     define('DB_HOST', 'mariadb');
     define('DB_USER', 'wp_headless');
     define('DB_PASSWORD', 'wp_headless');
+    define( 'WP_HOME', 'http://localhost:8080' );
+    define( 'WP_SITEURL', 'http://localhost:8080' );
 }
 
 /** Database Charset to use in creating database tables. */
@@ -118,6 +120,12 @@ define( 'WP_DEBUG_DISPLAY', false ); // Keep JSON response valid
 //Enable error logging.
 @ini_set('log_errors', 'On');
 @ini_set('error_log', '/var/www/html/wp-content/elm-error-logs/php-errors.log');
+
+@ini_set( 'upload_max_filesize' , '128M' );
+@ini_set( 'post_max_size', '128M');
+@ini_set( 'memory_limit', '256M' );
+@ini_set( 'max_execution_time', '300' );
+@ini_set( 'max_input_time', '300' );
 
 /* That's all, stop editing! Happy blogging. */
 /** Absolute path to the WordPress directory. */
