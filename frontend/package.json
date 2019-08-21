@@ -50,6 +50,7 @@
     "react": "^16.9.0",
     "react-apollo": "^3.0.1",
     "react-dom": "^16.9.0",
+    "react-modal-video": "^1.2.2",
     "sass-loader": "^7.2.0",
     "typescript": "^3.5.3",
     "webpack": "^4.39.2"

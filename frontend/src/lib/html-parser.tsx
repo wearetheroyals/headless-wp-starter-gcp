@@ -3,6 +3,7 @@ import HTMLReactParser, { domToReact } from 'html-react-parser';
 
 import HeroBanner from '../components/HeroBanner';
 import Button from '../components/Button';
+import VideoModal from '../components/VideoModal';
 
 export const parseContentComponent = ({ content = '', title = '' }) =>
   HTMLReactParser(content, {
@@ -22,6 +23,16 @@ export const parseContentComponent = ({ content = '', title = '' }) =>
 
       if (attribs.class && attribs.class.includes('wp-block-button')) {
         return <Button>{domToReact(children)}</Button>;
+      }
+
+      if (attribs.class && attribs.class.includes('wp-block-vimeo-modal')) {
+        return (
+          <VideoModal
+            videoId={attribs['data-video-id']}
+            videoName={attribs['data-video-name']}
+            placeholderImage={attribs['data-video-placeholder']}
+          />
+        );
       }
 
       // Final fallback, render section wrapped with a class.
