@@ -1,4 +1,16 @@
-<div class="wp-block-vimeo-modal" data-video-placeholder="<? block_field( 'video-plc-img' ); ?>" data-video-name="<? block_field( 'video-name' ); ?>" data-video-id="<? block_field( 'video-id' ); ?>">
-  <p>Vimeo Video Modal: <? block_field( 'video-id' ) ?></p>
-  <img src="<? block_field( 'video-plc-img' ); ?>" alt="<? block_field( 'video-name' ); ?>" />
+<?php
+$videoName = block_value( 'video-name' );
+$videoId = block_value( 'video-id' );
+?>
+
+<style>
+.wp-block-vimeo-modal {
+  border: 1px dotted;
+  text-align: center;
+}
+</style>
+
+<div class="wp-block-vimeo-modal" data-video-placeholder="<? block_field( 'video-plc-img' ); ?>" data-video-name="<?= $videoName; ?>" data-video-id="<?= $videoId; ?>">
+  <p>Vimeo Modal: <?= $videoId ?></p>
+  <img src="<? block_field( 'video-plc-img' ); ?>" alt="<?= $videoName; ?>" />
 </div>
