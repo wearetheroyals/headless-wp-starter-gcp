@@ -1,0 +1,16 @@
+.wp-block {
+  max-width: 100%;
+}
+
+.editor-block-list__layout {
+  margin-bottom: 25%;
+}
+
+.wp-block-group__inner-container {
+  border: 2px dotted green;
+}
+.wp-block-group__inner-container::before {
+  content: "Group Block";
+  color: green;
+  text-align: center;
+}
