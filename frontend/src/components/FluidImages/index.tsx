@@ -15,7 +15,6 @@ interface Props {
 }
 
 const FluidImages: React.SFC<Props> = ({ fluidImages = [] }) => {
-  // const imageWidth =
   return (
     <section className="image-links">
       {Array.isArray(fluidImages) &&
