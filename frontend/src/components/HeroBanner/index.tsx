@@ -1,17 +1,32 @@
 import React from 'react';
-import { domToReact } from 'html-react-parser';
 
-// import Button from '../Button';
+import Button from '../Button';
 
 import './style.scss';
 
 interface Props {
-  chd: Array<any>;
   title: string;
+  subtitle: string;
   backgroundImage: string;
+  buttonOne: {
+    text: string;
+    style: string;
+    linkReference: string;
+  };
+  buttonTwo: {
+    text: string;
+    style: string;
+    linkReference: string;
+  };
 }
 
-const Banner: React.SFC<Props> = ({ title, chd = [], backgroundImage }) => {
+const Banner: React.SFC<Props> = ({
+  title,
+  subtitle,
+  backgroundImage,
+  buttonOne,
+  buttonTwo,
+}) => {
   return (
     <section id="hero-banner" className="major">
       <img className="desktop-bg-img" src={backgroundImage} />
@@ -20,7 +35,13 @@ const Banner: React.SFC<Props> = ({ title, chd = [], backgroundImage }) => {
         <header className="major">
           <h1>{title}</h1>
         </header>
-        <div className="content">{domToReact(chd)}</div>
+        <div className="content">
+          <p>{subtitle}</p>
+          <div className="actions">
+            {buttonOne && <Button {...buttonOne}></Button>}
+            {buttonTwo && <Button {...buttonTwo}></Button>}
+          </div>
+        </div>
       </div>
     </section>
   );

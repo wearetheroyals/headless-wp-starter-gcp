@@ -18,7 +18,9 @@ const MenuItem = ({ onToggleMenu, url, label, type }) => {
 
   return (
     <li onClick={onToggleMenu}>
-      <Link href={url}>{label}</Link>
+      <Link href={url}>
+        <a>{label}</a>
+      </Link>
     </li>
   );
 };
@@ -66,7 +68,7 @@ const Menu = ({ onToggleMenu }) => {
                   ))}
               </ul>
             </div>
-            <a className="close" onClick={onToggleMenu} href="javascript:;">
+            <a className="close" onClick={onToggleMenu} href="#">
               Close
             </a>
           </nav>

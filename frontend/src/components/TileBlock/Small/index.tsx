@@ -19,14 +19,15 @@ const SmallTileBlock: React.SFC<Props> = ({ tiles = [], basePath = '' }) => {
   if (!Array.isArray(tiles)) {
     return null;
   }
-  console.log({ tiles });
-
-  const inner = t => <React.Fragment></React.Fragment>;
 
   return (
     <section className="small-tile-block">
-      {tiles.map(t => (
-        <LinkHOC linkReference={t.linkReference} addtlClass="tile">
+      {tiles.map((t, i) => (
+        <LinkHOC
+          key={`{${t.linkReference}-${i}`}
+          linkReference={t.linkReference}
+          addtlClass="tile"
+        >
           <div className="image-wrapper">
             {/* Empty styled div for height control */}
             <div />

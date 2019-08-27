@@ -14,3 +14,6 @@
   color: green;
   text-align: center;
 }
+.wp-block-group__inner-container .editor-block-list__layout {
+  margin-bottom: 0;
+}

@@ -1,0 +1,33 @@
+@import '../../../style/base';
+
+.textmodulecta {
+  display: flex;
+  align-items: center;
+
+  .btn {
+    margin-top: 40px;
+    cursor: pointer;
+
+    @include media-breakpoint-up(md) {
+      margin-top: 60px;
+    }
+  }
+}
+
+.textmodulecta.theme-highlighter {
+  color: white;
+  background-color: black;
+  text-align: center;
+
+  .inner {
+    max-width: 575px;
+    margin: 0 auto;
+  }
+  h2 {
+    text-transform: none;
+    margin-bottom: 25px;
+  }
+  .content-body > p {
+    color: white;
+  }
+}

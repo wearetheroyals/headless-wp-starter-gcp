@@ -21,7 +21,7 @@ const Header: React.SFC<Props> = ({
       </a>
     </Link>
     <nav>
-      <a className="menu-link" onClick={onToggleMenu} href="javascript:;">
+      <a className="menu-link" onClick={onToggleMenu} href="#">
         Menu
       </a>
     </nav>

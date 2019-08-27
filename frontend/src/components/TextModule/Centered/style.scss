@@ -1,0 +1,16 @@
+@import '../../../style/base';
+
+.textmodulecentered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .markdown {
+    margin-top: 30px;
+  }
+  .text {
+    max-width: 575px;
+  }
+}
