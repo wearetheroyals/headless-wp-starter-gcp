@@ -91,7 +91,7 @@ const MapBlockGroups = (childArr = []) => {
 export const parseContentComponent = ({ content = '', title = '' }) => {
   const HTMLReplacer = ({ name, attribs, children }) => {
     if (!attribs || !name || name === 'style') {
-      return null;
+      return <React.Fragment></React.Fragment>;
     }
 
     if (attribs.class && attribs.class.includes('wp-block-hero-banner')) {
