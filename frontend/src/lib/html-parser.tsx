@@ -4,6 +4,7 @@ import HTMLReactParser, { domToReact } from 'html-react-parser';
 import ArticleBlock from '../components/ArticleBlock';
 import HeroBanner from '../components/HeroBanner';
 import Button from '../components/Button';
+import Carousel from '../components/Carousel';
 import TileBlock from '../components/TileBlock';
 import TextModule from '../components/TextModule';
 import VideoModal from '../components/VideoModal';
@@ -59,6 +60,31 @@ const CreateFluidImageBlock = (elems = []) => {
   return <FluidImages fluidImages={fluidImages}></FluidImages>;
 };
 
+const CreateCarousel = (elems = []) => {
+  if (!Array.isArray(elems) || elems.length === 0) {
+    return null;
+  }
+
+  const items = elems
+    .map(ele => {
+      if (!ele.attribs) {
+        return null;
+      }
+
+      return {
+        type: ele.attribs['data-type'],
+        content: ele.attribs['data-content'],
+        style: ele.attribs['data-style'],
+        linkReference: ele.attribs['data-linkref'],
+        desktopImage: ele.attribs['data-desktop-image'],
+        mobileImage: ele.attribs['data-mobile-image'],
+      };
+    })
+    .filter(Boolean);
+
+  return <Carousel type={items[0].type} items={items}></Carousel>;
+};
+
 const MapBlockGroups = (childArr = []) => {
   if (!Array.isArray(childArr)) {
     return null;
@@ -83,6 +109,10 @@ const MapBlockGroups = (childArr = []) => {
 
   if (target.includes('wp-block-fluid-image')) {
     return CreateFluidImageBlock(elems);
+  }
+
+  if (target.includes('wp-block-carousel-item')) {
+    return CreateCarousel(elems);
   }
 
   return null;

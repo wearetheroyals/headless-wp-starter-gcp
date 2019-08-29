@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="14px" viewBox="0 0 28 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>icon-next</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="1">
+        <g id="Carousel/Desktop/Device" transform="translate(-1211.000000, -686.000000)" fill="#010101" fill-rule="nonzero">
+            <g id="Group-4">
+                <g id="Arrows" transform="translate(1173.000000, 686.000000)">
+                    <path d="M38,7 L38,7 C38,6.5252289 38.384878,6.14035088 38.8596491,6.14035088 L62.5968071,6.14035088 L58.3369227,1.84466905 C57.9988093,1.50371437 57.9999602,0.953572098 58.3394972,0.614035088 L58.3394972,0.614035088 C58.6786194,0.274912873 59.2284452,0.274912873 59.5675674,0.614035088 L65.9535323,7 L59.5778852,13.3756471 C59.2314214,13.7221109 58.6711255,13.7267031 58.3190294,13.3859649 L58.3190294,13.3859649 C57.9743007,13.0523565 57.9652859,12.5024557 58.2988943,12.157727 C58.3021949,12.1543164 58.3055233,12.150933 58.3088793,12.1475769 L62.5968071,7.85964912 L38.8596491,7.85964912 C38.384878,7.85964912 38,7.4747711 38,7 Z" id="icon-next"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

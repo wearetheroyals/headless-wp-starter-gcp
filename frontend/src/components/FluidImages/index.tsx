@@ -18,10 +18,10 @@ const FluidImages: React.SFC<Props> = ({ fluidImages = [] }) => {
   return (
     <section className="image-links">
       {Array.isArray(fluidImages) &&
-        fluidImages.map(({ linkReference, ...props }) => {
+        fluidImages.map(({ linkReference, ...props }, i) => {
           return (
             <FluidImage
-              key={linkReference}
+              key={`${linkReference}-${i}`}
               linkReference={linkReference}
               {...props}
             ></FluidImage>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="14px" viewBox="0 0 28 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>icon-previous</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="1">
+        <g id="Carousel/Desktop/Device" transform="translate(-1173.000000, -686.000000)" fill="#010101" fill-rule="nonzero">
+            <g id="Group-4">
+                <g id="Arrows" transform="translate(1173.000000, 686.000000)">
+                    <path d="M8.8817842e-14,7 L8.8817842e-14,7 C8.87596993e-14,6.5252289 0.384878022,6.14035088 0.859649123,6.14035088 L24.5968071,6.14035088 L20.3369227,1.84466905 C19.9988093,1.50371437 19.9999602,0.953572098 20.3394972,0.614035088 L20.3394972,0.614035088 C20.6786194,0.274912873 21.2284452,0.274912873 21.5675674,0.614035088 L27.9535323,7 L21.5778852,13.3756471 C21.2314214,13.7221109 20.6711255,13.7267031 20.3190294,13.3859649 L20.3190294,13.3859649 C19.9743007,13.0523565 19.9652859,12.5024557 20.2988943,12.157727 C20.3021949,12.1543164 20.3055233,12.150933 20.3088793,12.1475769 L24.5968071,7.85964912 L0.859649123,7.85964912 C0.384878022,7.85964912 8.95085068e-14,7.4747711 8.8817842e-14,7 Z" id="icon-previous" transform="translate(13.976766, 7.000000) scale(-1, 1) translate(-13.976766, -7.000000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
