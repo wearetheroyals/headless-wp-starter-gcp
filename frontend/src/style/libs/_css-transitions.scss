@@ -1,0 +1,19 @@
+/* CSS Common Transitions + Animations */
+
+// Total number of fades available
+$total: 10;
+
+@for $i from 1 through $total {
+  .fade-in-#{$i} {
+    opacity: 0;
+    transform: translate(0px, -3px);
+    transition: transform 1s, opacity 1s;
+    transition-delay: #{$i - 1}s;
+  }
+  .visible {
+    .fade-in-#{$i} {
+      opacity: 1;
+      transform: translate(0px, 0px);
+    }
+  }
+}

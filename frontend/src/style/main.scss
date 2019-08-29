@@ -1,19 +1,53 @@
 @import 'base';
-@import 'libs/skel';
+// @import 'libs/skel';
+@import 'libs/html-grid';
 
-@include skel-layout(
+// @include skel-layout(
+//   (
+//     reset: 'full',
+//     boxModel: 'border',
+//   )
+// );
+
+// Breakpoints.
+
+@include breakpoints(
   (
-    reset: 'full',
-    boxModel: 'border',
+    xlarge: (
+      1200px,
+      1680px,
+    ),
+    large: (
+      992px,
+      1199px,
+    ),
+    medium: (
+      768px,
+      991px,
+    ),
+    small: (
+      481px,
+      767px,
+    ),
+    xsmall: (
+      361px,
+      480px,
+    ),
+    xxsmall: (
+      null,
+      360px,
+    ),
   )
 );
 
 @import 'base/page';
+@import 'base/reset';
 @import 'base/typography';
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic');
 
 // Component.
 
+@import 'components/row';
 @import 'components/section';
 @import 'components/form';
 @import 'components/box';

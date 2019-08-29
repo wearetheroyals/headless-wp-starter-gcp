@@ -6,6 +6,41 @@
 
 /* Section/Article */
 
+header + main > section:first-child {
+  &:first-child {
+    top: -3.25em;
+    margin-bottom: -3.25em;
+  }
+}
+
+section {
+  margin: 2rem 0px;
+
+  &.major {
+    @include padding(4em, 0, (0, 0, 0, 0));
+    height: 75vh;
+    box-sizing: border-box;
+
+    &:first-child {
+      top: -3.25em;
+      margin-bottom: -3.25em;
+      min-height: 30em;
+      max-height: 50em;
+    }
+
+    &.alt {
+      opacity: 0.75;
+    }
+  }
+}
+
+section:first-child {
+  margin-top: 0;
+}
+section:last-child {
+  margin-bottom: 0;
+}
+
 section,
 article {
   &.special {
@@ -27,7 +62,7 @@ header {
 
       &:after {
         content: '';
-        background-color: _palette(fgBold);
+        background-color: _palette(bgAlt);
         display: block;
         height: 2px;
         margin: 0.325em 0 0.5em 0;
