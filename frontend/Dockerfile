@@ -1,9 +1,16 @@
 FROM gcr.io/google-appengine/nodejs
 
+WORKDIR /app
+
 COPY ./package.json .
 COPY ./yarn.lock .
 
-WORKDIR /app
+COPY ./.babelrc .
+COPY ./next.config.js .
+COPY ./nodemon.json .
+COPY ./postcss.config.js .
+COPY ./tsconfig.json .
+COPY ./server.js .
 
 RUN /usr/local/bin/install_node '=10'
 

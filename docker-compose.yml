@@ -1,7 +1,7 @@
-version: '2'
+version: "2"
 
 volumes:
-  node_modules:
+  # node_modules:
   db_data:
 
 services:
@@ -11,9 +11,9 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     ports:
-      - '3307:3306'
+      - "3307:3306"
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_DATABASE: wp_headless
       MYSQL_PASSWORD: wp_headless
       MYSQL_USER: wp_headless
@@ -40,7 +40,7 @@ services:
       - mariadb
     env_file: ./.env
     ports:
-      - '8080:8080'
+      - "8080:8080"
     user: www-data
     volumes:
       - ./wordpress:/var/www/html
@@ -62,8 +62,7 @@ services:
       GRAPHQL_ENDPOINT: http://wordpress-522:8080/graphql
       PORT: "3000"
     ports:
-      - '3000:3000'
+      - "3000:3000"
     volumes:
-      - ./frontend:/app
-      - node_modules:/app/node_modules
+      - ./frontend/src:/app/src
     working_dir: /app
