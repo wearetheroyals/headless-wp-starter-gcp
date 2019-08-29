@@ -19,7 +19,7 @@ const ContactBlock: React.SFC<Props> = ({ type, ...props }) => {
   const contactJSX = {
     standard: () => <StandardContact {...props} />,
     grid: () => <GridContact {...props} />,
-    profiles: () => <ProfilesContact {...props} />,
+    profile: () => <ProfilesContact {...props} />,
   };
 
   if (contactJSX[type]) {

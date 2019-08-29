@@ -53,7 +53,7 @@ const CreateFluidImageBlock = (elems = []) => {
         backgroundImage: ele.attribs['data-background-image'],
         content: ele.attribs['data-content'],
         style: ele.attribs['data-style'],
-        linkReference: ele.attribs['data-link-reference'],
+        linkReference: ele.attribs['data-linkref'],
       };
     })
     .filter(Boolean);
