@@ -1,0 +1,22 @@
+@import '../../../style/base';
+
+.profile {
+  .contact-card {
+    padding-left: 5em;
+
+    ul li {
+      display: block;
+      font-size: 0.875rem;
+    }
+    span {
+      font-size: 0.875rem;
+    }
+    h5 {
+      text-transform: uppercase;
+    }
+    .icon {
+      width: 65px;
+      height: 65px;
+    }
+  }
+}

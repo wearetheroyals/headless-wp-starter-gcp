@@ -5,6 +5,7 @@ import ArticleBlock from '../components/ArticleBlock';
 import HeroBanner from '../components/HeroBanner';
 import Button from '../components/Button';
 import Carousel from '../components/Carousel';
+import ContactBlock from '../components/ContactBlock';
 import TileBlock from '../components/TileBlock';
 import TextModule from '../components/TextModule';
 import VideoModal from '../components/VideoModal';
@@ -85,6 +86,33 @@ const CreateCarousel = (elems = []) => {
   return <Carousel type={items[0].type} items={items}></Carousel>;
 };
 
+const CreateContactBlock = (elems = []) => {
+  if (!Array.isArray(elems) || elems.length === 0) {
+    return null;
+  }
+
+  const people = elems
+    .map(ele => {
+      if (!ele.attribs) {
+        return null;
+      }
+
+      return {
+        type: ele.attribs['data-type'],
+        title: ele.attribs['data-title'],
+        name: ele.attribs['data-name'],
+        email: ele.attribs['data-email'],
+        phone: ele.attribs['data-phone'],
+        twitter: ele.attribs['data-twitter'],
+        shortBio: ele.attribs['data-short-bio'],
+        image: ele.attribs['data-image'],
+      };
+    })
+    .filter(Boolean);
+
+  return <ContactBlock type={people[0].type} contacts={people}></ContactBlock>;
+};
+
 const MapBlockGroups = (childArr = []) => {
   if (!Array.isArray(childArr)) {
     return null;
@@ -113,6 +141,10 @@ const MapBlockGroups = (childArr = []) => {
 
   if (target.includes('wp-block-carousel-item')) {
     return CreateCarousel(elems);
+  }
+
+  if (target.includes('wp-block-person-block')) {
+    return CreateContactBlock(elems);
   }
 
   return null;
