@@ -1,14 +1,7 @@
 @import 'base';
-// @import 'libs/skel';
 @import 'libs/html-grid';
-
-// @include skel-layout(
-//   (
-//     reset: 'full',
-//     boxModel: 'border',
-//   )
-// );
-
+@import 'libs/css-grid';
+@import 'libs/css-transitions';
 // Breakpoints.
 
 @include breakpoints(
