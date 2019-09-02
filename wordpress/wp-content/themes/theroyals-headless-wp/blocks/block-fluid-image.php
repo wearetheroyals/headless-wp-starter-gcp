@@ -26,5 +26,5 @@ $style = block_value( 'style' );
   <p>Content: <?= $content; ?></p>
   <p>Link Reference: <?= $linkref; ?></p>
   <p>Style: <?= $style; ?></p>
-  <img src="<? block_field( 'background-image' ); ?>" alt="<?= $title; ?>" />
+  <img src="<? block_field( 'background-image' ); ?>" alt="<?= $type; ?>" />
 </div>
