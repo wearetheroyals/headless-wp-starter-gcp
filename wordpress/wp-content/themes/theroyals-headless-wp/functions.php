@@ -70,22 +70,6 @@ function display_contact_email()
 	wp_editor( $contact_email, 'contact_email', array('textarea_rows'=>5, 'teeny'=>true, 'media_buttons'=>false) );
 }
 
-function display_menu_items()
-{
-	$menu_items = get_option( 'menu_items' );
-	?>
-	<p>Create a new line for each menu item</p>
-	<p>Add in the format; Name : Link</p>
-	<p>External link eg. <code>Google : https://google.com</code></p>
-	<p>Internal link eg. <code>Blog : /blog</code></p>
-	<p>Maximum 6 links for this design</p>
-
-	<textarea type='text' name='menu_items' rows='7' cols='50' value='<?= $menu_items; ?>'><?= $menu_items; ?></textarea>
-
-	<?php
-}
-
-
 
 function register_settings() {
 
@@ -97,31 +81,28 @@ function register_settings() {
         'show_in_graphql' => true,
     );
 
-		register_setting("general", "site_author", $args);
+		register_setting("royalsgeneral", "site_author", $args);
 
-		register_setting("navbar", "menu_items", $args);
+		register_setting("royalspalette", "palette_color_0", $args);
 
-		register_setting("palette", "palette_color_0", $args);
-
-    register_setting("footer", "contact_address", $args);
-    register_setting("footer", "contact_email", $args);
+    register_setting("royalsfooter", "contact_address", $args);
+    register_setting("royalsfooter", "contact_email", $args);
 
 }
 
 function register_settings_groups() {
 
-    add_settings_section("general", "General", null, "theroyals_headless_wp_general");
-    add_settings_field("site_author", "Site Author", "display_site_author", "theroyals_headless_wp_general", "general");
+    add_settings_section("royalsgeneral", "General", null, "theroyals_headless_wp_general");
+    add_settings_field("site_author", "Site Author", "display_site_author", "theroyals_headless_wp_general", "royalsgeneral");
 
-    add_settings_section("navbar", "Navbar", null, "theroyals_headless_wp_navbar");
-    add_settings_field("menu_items", "Menu Items", "display_menu_items", "theroyals_headless_wp_navbar", "navbar");
+    add_settings_section("royalsnavbar", "Navbar", null, "theroyals_headless_wp_navbar");
 
-    add_settings_section("palette", "Palette", null, "theroyals_headless_wp_palette");
-    add_settings_field("palette_color_0", "Palette Colour 0", "display_palette_color_0", "theroyals_headless_wp_palette", "palette");
+    add_settings_section("royalspalette", "Palette", null, "theroyals_headless_wp_palette");
+    add_settings_field("palette_color_0", "Palette Colour 0", "display_palette_color_0", "theroyals_headless_wp_palette", "royalspalette");
 
-    add_settings_section("footer", "Footer", null, "theroyals_headless_wp_footer");
-    add_settings_field("contact_address", "Contact Address", "display_contact_address", "theroyals_headless_wp_footer", "footer");
-    add_settings_field("contact_email", "Contact Email", "display_contact_email", "theroyals_headless_wp_footer", "footer");
+    add_settings_section("royalsfooter", "Footer", null, "theroyals_headless_wp_footer");
+    add_settings_field("contact_address", "Contact Address", "display_contact_address", "theroyals_headless_wp_footer", "royalsfooter");
+    add_settings_field("contact_email", "Contact Email", "display_contact_email", "theroyals_headless_wp_footer", "royalsfooter");
 }
 
 
@@ -138,32 +119,28 @@ function theme_settings_page()
 					if( isset( $_GET[ 'tab' ] ) ) {
 						$active_tab = $_GET[ 'tab' ];
 					} else {
-						$active_tab = 'general';
+						$active_tab = 'royalsgeneral';
 					}
 			?>
 
 			<h2 class="nav-tab-wrapper">
-					<a href="?page=the_royals_headless_theme_settings&tab=general" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General</a>
-					<a href="?page=the_royals_headless_theme_settings&tab=navbar" class="nav-tab <?php echo $active_tab == 'navbar' ? 'nav-tab-active' : ''; ?>">Navbar</a>
-					<a href="?page=the_royals_headless_theme_settings&tab=palette" class="nav-tab <?php echo $active_tab == 'palette' ? 'nav-tab-active' : ''; ?>">Palette</a>
-					<a href="?page=the_royals_headless_theme_settings&tab=footer" class="nav-tab <?php echo $active_tab == 'footer' ? 'nav-tab-active' : ''; ?>">Footer</a>
+					<a href="?page=the_royals_headless_theme_settings&tab=royalsgeneral" class="nav-tab <?php echo $active_tab == 'royalsgeneral' ? 'nav-tab-active' : ''; ?>">General</a>
+					<a href="?page=the_royals_headless_theme_settings&tab=royalspalette" class="nav-tab <?php echo $active_tab == 'royalspalette' ? 'nav-tab-active' : ''; ?>">Palette</a>
+					<a href="?page=the_royals_headless_theme_settings&tab=royalsfooter" class="nav-tab <?php echo $active_tab == 'royalsfooter' ? 'nav-tab-active' : ''; ?>">Footer</a>
 			</h2>
 
 			<form method="post" action="options.php">
 
 			<?php
 
-				if( $active_tab == 'general' ) {
-					settings_fields( 'general' );
+				if( $active_tab == 'royalsgeneral' ) {
+					settings_fields( 'royalsgeneral' );
 					do_settings_sections( 'theroyals_headless_wp_general' );
-				} else if( $active_tab == 'navbar' ) {
-					settings_fields( 'navbar' );
-					do_settings_sections( 'theroyals_headless_wp_navbar' );
-				} else if( $active_tab == 'palette' ) {
-					settings_fields( 'palette' );
+				} else if( $active_tab == 'royalspalette' ) {
+					settings_fields( 'royalspalette' );
 					do_settings_sections( 'theroyals_headless_wp_palette' );
-				}else if( $active_tab == 'footer' ) {
-					settings_fields( 'footer' );
+				}else if( $active_tab == 'royalsfooter' ) {
+					settings_fields( 'royalsfooter' );
 					do_settings_sections( 'theroyals_headless_wp_footer' );
 				}
 
